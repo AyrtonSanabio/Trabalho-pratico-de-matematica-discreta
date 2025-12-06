@@ -51,15 +51,17 @@ int le_ordem(char caminho[]) {
     FILE *arquivo = fopen(caminho, "r");
     if (arquivo == NULL) {
         printf("\nErro ao abrir o arquivo");
-        return;
+        return 0;
     }
 
     char linha[8];
     fgets(linha, sizeof(linha), arquivo);
 
+    int ordem;
+    sscanf(linha,"n %d", &ordem);
+
     fclose(arquivo);
-    
-    return atoi(&linha[2]);
+    return ordem;
 }
 
 void le_arquivo(char *nome_arquivo, int **matriz) {
@@ -71,11 +73,14 @@ void le_arquivo(char *nome_arquivo, int **matriz) {
 
     char linha[8];
     fgets(linha, sizeof(linha), arquivo);
-    int ordem = atoi(&linha[2]);
+    int ordem;
+    sscanf(linha,"n %d", &ordem);
     
    while (fgets(linha, sizeof(linha), arquivo) && linha[0] != 'f' && ordem) {
-        int ind_lin = atoi(&linha[2]);
-        int ind_col = atoi(&linha[4]);
+        int ind_lin;
+        int ind_col; 
+
+        sscanf(linha, "r %d %d", &ind_lin, &ind_col);
 
         if (ind_col > ordem || ind_lin > ordem)
         {
