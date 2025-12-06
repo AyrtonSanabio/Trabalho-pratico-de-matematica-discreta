@@ -191,6 +191,7 @@ void fecho_transitivo(matriz* matriz, int ordem) {
     for (int k = 0; k < ordem; k++) {
         for (int i = 0; i < ordem; i++) {
             for (int j = 0; j < ordem; j++) {
+                //para todo k, se existe um iRk e um kRj, deve ter um iRj
                 if (matriz->fecho_transitivo[i][k] && matriz->fecho_transitivo[k][j]) {
                     if (matriz->fecho_transitivo[i][j] == 0) {
                         matriz->fecho_transitivo[i][j] = 2; // seu valor especial
@@ -236,7 +237,8 @@ int main (int argc, char *argv[]) {
     printf("\nReflexiva: %d", m.eh_reflexivo);
     printf("\nSimetrico: %d", m.eh_simetrico);
     printf("\nTransitivo: %d", m.eh_transitivo);
-    
+    printf("\n");
+
     for (int i = 0; i < ordem; i++)
         free(m.principal[i]);
     free(m.principal);
