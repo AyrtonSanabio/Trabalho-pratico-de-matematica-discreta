@@ -218,6 +218,7 @@ void fecho_simetrico (matriz* matriz, int ordem) {
 
 //Para adicionar o fecho transitivo verificamos se existe um iRk e um KrJ, logo deve ter um iRj, verificamos, e caso não exista essa relação (representado por 0), preenchemos com "2" para 
 //representar os arcos necessários para o fecho transitivo.
+//Pesquisando maneiras de implementar o fecho transitivo, optamos pelo algoritmo de Warshall
 void fecho_transitivo (matriz* matriz, int ordem) {
     matriz->fecho_transitivo = aloca_matriz(ordem);
 
